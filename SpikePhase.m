@@ -68,12 +68,12 @@ dat_out_fname   = ft_getopt(cfg, 'dat_out_fname', []);
 plot_out_dir    = ft_getopt(cfg, 'plot_out_dir', []);
 
 % Get function-specific settings
-n_spk_persmp    = cfg.ft_getopt(cfg, 'n_spk_persmp', 100);
-n_reps_subsmp 	= cfg.ft_getopt(cfg, 'n_reps_subsmp', 250);
-n_phz_bins      = cfg.ft_getopt(cfg, 'n_phz_bins', 10);
-nshuffs         = cfg.ft_getopt(cfg, 'nshuffs', 1000);
-phzhist_norm    = cfg.ft_getopt(cfg, 'phzhist_norm', 'count');
-sumplot_method  = cfg.ft_getopt(cfg, 'sumhist_method', 'line');
+n_spk_persmp    = ft_getopt(cfg, 'n_spk_persmp', 100);
+n_reps_subsmp 	= ft_getopt(cfg, 'n_reps_subsmp', 250);
+n_phz_bins      = ft_getopt(cfg, 'n_phz_bins', 10);
+nshuffs         = ft_getopt(cfg, 'nshuffs', 1000);
+phzhist_norm    = ft_getopt(cfg, 'phzhist_norm', 'count');
+sumplot_method  = ft_getopt(cfg, 'sumhist_method', 'line');
 
 % Create Directory for Output Figures
 if dosave && exist(plot_out_dir) ~= 7
@@ -201,8 +201,7 @@ if doplot
     for cond = 1:length(dat.condition)
       subplot(3, u_perplot, (cond-1)*u_perplot+u_fig);
       hold on;
-      
-      
+
       % Plot the phase histogram for this unit, this condition
       %     polarhistogram('BinEdges', phase_bin_edges, 'BinCounts', squeeze(n_spk_phz(u,cond,:)))
       if strcmp(phzhist_norm, 'probability')
